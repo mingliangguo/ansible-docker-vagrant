@@ -24,6 +24,10 @@
   roles:
     - geerlingguy.docker
     - { role: nover.ohmyzsh, ohmyzsh_theme: 'robbyrussell', become: true, ignore_errors: yes }
+    - role: geerlingguy.java
+      when: "ansible_os_family == 'Debian'"
+      java_packages:
+        - openjdk-8-jdk
 
   tasks:
     - name: Ensure python3 is installed.
@@ -34,4 +38,5 @@
         - pipenv
         - neovim
         - jq
+        # - openjdk-8-jdk
 

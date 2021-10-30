@@ -2,3 +2,4 @@
 - src: geerlingguy.docker
 - src: geerlingguy.kubernetes
 - src: nover.ohmyzsh
+- src: geerlingguy.java
