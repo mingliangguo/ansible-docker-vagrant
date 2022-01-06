@@ -5,6 +5,12 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/focal64"
+  config.vm.network "private_network", type: "dhcp"
+
+  # use host dns
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  end
 
   config.vm.provider :virtualbox do |v|
     v.name = "dockervm"

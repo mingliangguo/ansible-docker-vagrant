@@ -41,5 +41,7 @@
         - unzip
         - curl
         - jq
+        - zsh
+        - byobu
         # - openjdk-8-jdk
 
