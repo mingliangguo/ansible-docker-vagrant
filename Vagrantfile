@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ubuntu/focal64"
+  config.vm.box = "bento/ubuntu-20.04-arm64"
   config.vm.network "private_network", type: "dhcp"
 
   # use host dns
@@ -26,6 +26,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.compatibility_mode = "2.0"
     ansible.playbook = "playbook.yml"
     ansible.become = true
+    ansible.galaxy_role_file = "requirements.yml"
+    ansible.galaxy_roles_path = "/etc/ansible/roles"
+    ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
   end
 
 end
